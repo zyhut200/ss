@@ -671,43 +671,7 @@ else
 		echo -e " 当前状态: ${Red_font_prefix}未安装${Font_color_suffix}"
 	fi
 	echo
-	read -e -p " 请输入数字 [0-10]:" num
-	case "$num" in
-		0)
-		Update_Shell
-		;;
-		1)
-		Install
-		;;
-		2)
-		Update
-		;;
-		3)
-		Uninstall
-		;;
-		4)
-		Start
-		;;
-		5)
-		Stop
-		;;
-		6)
-		Restart
-		;;
-		7)
-		Set
-		;;
-		8)
-		View
-		;;
-		9)
-		View_Log
-		;;
-		10)
-		View_user_connection_info
-		;;
-		*)
-		echo "请输入正确数字 [0-10]"
+		1
 		;;
 	esac
 fi
