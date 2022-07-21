@@ -577,8 +577,4 @@ else
 		echo -e " 当前状态: ${Red_font_prefix}未安装${Font_color_suffix}"
 	fi	
        		echo "Install"
-		;;
-	esac 
-	echo
-		1
-fi
+	esac
