@@ -557,9 +557,3 @@ Update_Shell(){
 	if [[ -e "/etc/init.d/ss-go" ]]; then
 		rm -rf /etc/init.d/ss-go
 		Service
-	fi
-	wget -N --no-check-certificate "https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/ss-go.sh" && chmod +x ss-go.sh
-	echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !(注意：因为更新方式为直接覆盖当前运行的脚本，所以可能下面会提示一些报错，无视即可)" && exit 0
-}
-check_sys
-action=$1
