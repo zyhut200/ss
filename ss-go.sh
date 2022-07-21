@@ -521,11 +521,7 @@ install_select(){
         hint="${software[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    selected='1'
-    case "${selected}" in
-        1|2|3|4)
-        echo
-        echo "You choose = ${software[${selected}-1]}"
+        echo "You choose = 1"
         echo
         break
         ;;
@@ -537,11 +533,7 @@ install_select(){
 }
 
 install_prepare_password(){
-    echo "Please enter password for ${software[${selected}-1]}"
-    read -p '(Default password: teddysun.com):' shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd='teddysun.com'
-    echo
-    echo "password = ${shadowsockspwd}"
+    echo "password = 10010"
     echo
 }
 
