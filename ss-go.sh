@@ -563,24 +563,3 @@ Update_Shell(){
 }
 check_sys
 action=$1
-if [[ "${action}" == "monitor" ]]; then
-	crontab_monitor
-else
-	echo && echo -e "  Shadowsocks-Go 一键管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
-  ---- Toyo | doub.io/ss-jc67 ----
-
-	if [[ -e ${FILE} ]]; then
-		check_pid
-		if [[ ! -z "${PID}" ]]; then
-			echo -e " 当前状态: ${Green_font_prefix}已安装${Font_color_suffix} 并 ${Green_font_prefix}已启动${Font_color_suffix}"
-		else
-			echo -e " 当前状态: ${Green_font_prefix}已安装${Font_color_suffix} 但 ${Red_font_prefix}未启动${Font_color_suffix}"
-		fi
-	else
-		echo -e " 当前状态: ${Red_font_prefix}未安装${Font_color_suffix}"
-
-     	fi
-	echo
-	case "Install" in		
-	esac
-fi
