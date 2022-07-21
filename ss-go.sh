@@ -581,8 +581,6 @@ else
 
      	fi
 	echo
-	case "1" in
-		1)
-		Install
+	case "Install" in		
 	esac
 fi
