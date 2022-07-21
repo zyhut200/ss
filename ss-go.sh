@@ -524,7 +524,6 @@ install_select(){
         echo "You choose = 1"
         echo
         break
-        ;;
         *)
         echo -e "[${red}Error${plain}] Please only enter a number [1-4]"
         ;;
