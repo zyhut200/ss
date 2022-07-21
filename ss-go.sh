@@ -507,24 +507,8 @@ install_check(){
 }
 
 install_select(){
-    if ! install_check; then
-        echo -e "[${red}Error${plain}] Your OS is not supported to run it!"
-        echo 'Please change to CentOS 6+/Debian 7+/Ubuntu 12+ and try again.'
-        exit 1
-    fi
-
-    clear
-    while true
-    do
-    echo  "Which Shadowsocks server you'd select:"
-    for ((i=1;i<=${#software[@]};i++ )); do
-        hint="${software[$i-1]}"
-        echo -e "${green}${i}${plain}) ${hint}"
-    done
         echo "You choose = 1"
         echo
-    esac
-    done
 }
 
 install_prepare_password(){
@@ -533,17 +517,7 @@ install_prepare_password(){
 }
 
 install_prepare_port() {
-    while true
-    do
-    dport=$(shuf -i 9000-19999 -n 1)
-    echo -e "Please enter a port for ${software[${selected}-1]} [1-65535]"
-    read -p "(Default port: ${dport}):" shadowsocksport
-    [ -z "${shadowsocksport}" ] && shadowsocksport=${dport}
-    expr "${shadowsocksport}" + 1 &>/dev/null
-    if [ $? -eq 0 ]; then
-        if [ "${shadowsocksport}" -ge 1 ] && [ "${shadowsocksport}" -le 65535 ] && [ "${shadowsocksport:0:1}" != 0 ]; then
-            echo
-            echo "port = ${shadowsocksport}"
+            echo "port = 11588"
             echo
             break
         fi
