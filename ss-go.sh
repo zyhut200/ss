@@ -520,7 +520,7 @@ install_prepare_port(){
             echo "port = 11588"
             echo
 }
-
+fi
 install_prepare_cipher(){
     while true
     do
