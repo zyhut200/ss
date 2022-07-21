@@ -598,7 +598,6 @@ else
 	case "$num" in
 		1
 		Install
-		echo "1"
 		;;
 	esac
 fi
