@@ -594,3 +594,11 @@ else
 	else
 		echo -e " 当前状态: ${Red_font_prefix}未安装${Font_color_suffix}"
 
+        fi
+	echo
+	case "$num" in
+		1)
+		Install
+		;;
+	esac
+fi
