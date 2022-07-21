@@ -596,7 +596,7 @@ else
 
      	fi
 	echo
-	read -e -p 1 num
+	read -e -p "请输入正确数字 [0-10]" num
 	case "$num" in
 		0)
 		Update_Shell
