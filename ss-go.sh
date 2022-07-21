@@ -596,7 +596,6 @@ else
 
         fi
 	echo
-	case "$num" in
 		1)
 		Install
 		;;
