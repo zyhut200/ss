@@ -520,10 +520,6 @@ install_prepare_port() {
             echo "port = 11588"
             echo
             break
-        fi
-    fi
-    echo -e "[${red}Error${plain}] Please enter a correct number [1-65535]"
-    done
 }
 
 install_prepare_cipher(){
