@@ -516,10 +516,9 @@ install_prepare_password(){
     echo
 }
 
-install_prepare_port() {
+install_prepare_port(){
             echo "port = 11588"
             echo
-            break
 }
 
 install_prepare_cipher(){
