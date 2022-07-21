@@ -578,6 +578,5 @@ else
 	fi
 	echo
 		1
-		;;
 	esac
 fi
