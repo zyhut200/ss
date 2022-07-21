@@ -568,22 +568,7 @@ if [[ "${action}" == "monitor" ]]; then
 else
 	echo && echo -e "  Shadowsocks-Go 一键管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   ---- Toyo | doub.io/ss-jc67 ----
-  
- ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
-————————————
- ${Green_font_prefix} 1.${Font_color_suffix} 安装 Shadowsocks
- ${Green_font_prefix} 2.${Font_color_suffix} 更新 Shadowsocks
- ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Shadowsocks
-————————————
- ${Green_font_prefix} 4.${Font_color_suffix} 启动 Shadowsocks
- ${Green_font_prefix} 5.${Font_color_suffix} 停止 Shadowsocks
- ${Green_font_prefix} 6.${Font_color_suffix} 重启 Shadowsocks
-————————————
- ${Green_font_prefix} 7.${Font_color_suffix} 设置 账号配置
- ${Green_font_prefix} 8.${Font_color_suffix} 查看 账号信息
- ${Green_font_prefix} 9.${Font_color_suffix} 查看 日志信息
- ${Green_font_prefix}10.${Font_color_suffix} 查看 链接信息
-————————————" && echo
+
 	if [[ -e ${FILE} ]]; then
 		check_pid
 		if [[ ! -z "${PID}" ]]; then
@@ -596,43 +581,8 @@ else
 
      	fi
 	echo
-	read -e -p "请输入正确数字 [0-10]" num
 	case "$num" in
-		0)
-		Update_Shell
-		;;
 		1)
 		Install
-		;;
-		2)
-		Update
-		;;
-		3)
-		Uninstall
-		;;
-		4)
-		Start
-		;;
-		5)
-		Stop
-		;;
-		6)
-		Restart
-		;;
-		7)
-		Set
-		;;
-		8)
-		View
-		;;
-		9)
-		View_Log
-		;;
-		10)
-		View_user_connection_info
-		;;
-		*)
-		echo "请输入正确数字 [0-10]"
-		;;
 	esac
 fi
