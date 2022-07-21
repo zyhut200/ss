@@ -581,7 +581,7 @@ else
 
      	fi
 	echo
-	case "$num" in
+	case "1" in
 		1)
 		Install
 	esac
