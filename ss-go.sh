@@ -162,97 +162,21 @@ Read_config(){
 	verbose=$(cat ${CONF}|grep 'VERBOSE = '|awk -F 'VERBOSE = ' '{print $NF}')
 }
 Set_port(){
-	while true
-		do
-		echo -e "请输入 Shadowsocks 端口 [1-65535]"
-		read -e -p "(默认: 443):" ss_port
-		[[ -z "${ss_port}" ]] && ss_port="443"
-		echo $((${ss_port}+0)) &>/dev/null
-		if [[ $? -eq 0 ]]; then
-			if [[ ${ss_port} -ge 1 ]] && [[ ${ss_port} -le 65535 ]]; then
-				echo && echo "========================"
-				echo -e "	端口 : ${Red_background_prefix} ${ss_port} ${Font_color_suffix}"
-				echo "========================" && echo
-				break
-			else
-				echo "输入错误, 请输入正确的端口。"
-			fi
-		else
-			echo "输入错误, 请输入正确的端口。"
-		fi
-		done
+	ss_port="11588"
+		
 }
 Set_password(){
-	echo "请输入 Shadowsocks 密码 [0-9][a-z][A-Z]"
-	read -e -p "(默认: 随机生成):" ss_password
-	[[ -z "${ss_password}" ]] && ss_password=$(date +%s%N | md5sum | head -c 16)
-	echo && echo "========================"
-	echo -e "	密码 : ${Red_background_prefix} ${ss_password} ${Font_color_suffix}"
-	echo "========================" && echo
+	ss_password="10010"
+	
 }
 Set_cipher(){
-	echo -e "请选择 Shadowsocks 加密方式
+		
+ 	ss_cipher="aes-256-cfb"
 	
- ${Green_font_prefix} 1.${Font_color_suffix} aes-128-cfb
- ${Green_font_prefix} 2.${Font_color_suffix} aes-128-ctr
- ${Green_font_prefix} 3.${Font_color_suffix} aes-192-cfb
- ${Green_font_prefix} 4.${Font_color_suffix} aes-192-ctr
- ${Green_font_prefix} 5.${Font_color_suffix} aes-256-cfb
- ${Green_font_prefix} 6.${Font_color_suffix} aes-256-ctr
- ${Green_font_prefix} 7.${Font_color_suffix} chacha20-ietf
- ${Green_font_prefix} 8.${Font_color_suffix} xchacha20
- ${Green_font_prefix} 9.${Font_color_suffix} aes-128-gcm            (AEAD)
- ${Green_font_prefix}10.${Font_color_suffix} aes-192-gcm            (AEAD)
- ${Green_font_prefix}11.${Font_color_suffix} aes-256-gcm            (AEAD)
- ${Green_font_prefix}12.${Font_color_suffix} chacha20-ietf-poly1305 (AEAD)
-
- ${Tip} chacha20 系列加密方式无需额外安装 libsodium，Shadowsocks Go版默认集成 !" && echo
-	read -e -p "(默认: 12. chacha20-ietf-poly1305):" ss_cipher
-	[[ -z "${ss_cipher}" ]] && ss_cipher="12"
-	if [[ ${ss_cipher} == "1" ]]; then
-		ss_cipher="aes-128-cfb"
-	elif [[ ${ss_cipher} == "2" ]]; then
-		ss_cipher="aes-128-ctr"
-	elif [[ ${ss_cipher} == "3" ]]; then
-		ss_cipher="aes-192-cfb"
-	elif [[ ${ss_cipher} == "4" ]]; then
-		ss_cipher="aes-192-ctr"
-	elif [[ ${ss_cipher} == "5" ]]; then
-		ss_cipher="aes-256-cfb"
-	elif [[ ${ss_cipher} == "6" ]]; then
-		ss_cipher="aes-256-ctr"
-	elif [[ ${ss_cipher} == "7" ]]; then
-		ss_cipher="chacha20-ietf"
-	elif [[ ${ss_cipher} == "8" ]]; then
-		ss_cipher="xchacha20"
-	elif [[ ${ss_cipher} == "9" ]]; then
-		ss_cipher="aead_aes_128_gcm"
-	elif [[ ${ss_cipher} == "10" ]]; then
-		ss_cipher="aead_aes_192_gcm"
-	elif [[ ${ss_cipher} == "11" ]]; then
-		ss_cipher="aead_aes_256_gcm"
-	elif [[ ${ss_cipher} == "12" ]]; then
-		ss_cipher="aead_chacha20_poly1305"
-	else
-		ss_cipher="aead_chacha20_poly1305"
-	fi
-	echo && echo "========================"
-	echo -e "	加密 : ${Red_background_prefix} ${ss_cipher} ${Font_color_suffix}"
-	echo "========================" && echo
 }
 Set_verbose(){
-	echo -e "是否启用详细日志模式？[Y/n]
-启用详细日志模式就可以在日志中看到链接者信息(链接时间、链接代理端口、链接者IP、链接者访问的目标域名或IP这些非敏感类信息)。"
-	read -e -p "(默认：N 禁用):" ss_verbose
-	[[ -z "${ss_verbose}" ]] && ss_verbose="N"
-	if [[ "${ss_verbose}" == [Yy] ]]; then
-		ss_verbose="YES"
-	else
-		ss_verbose="NO"
-	fi
-	echo && echo "========================"
-	echo -e "	详细日志模式 : ${Red_background_prefix} ${ss_verbose} ${Font_color_suffix}"
-	echo "========================" && echo
+	ss_verbose="N"
+	
 }
 Set(){
 	check_installed_status
@@ -642,24 +566,6 @@ action=$1
 if [[ "${action}" == "monitor" ]]; then
 	crontab_monitor
 else
-	echo && echo -e "  Shadowsocks-Go 一键管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
-  ---- Toyo | doub.io/ss-jc67 ----
-  
- ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
-————————————
- ${Green_font_prefix} 1.${Font_color_suffix} 安装 Shadowsocks
- ${Green_font_prefix} 2.${Font_color_suffix} 更新 Shadowsocks
- ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Shadowsocks
-————————————
- ${Green_font_prefix} 4.${Font_color_suffix} 启动 Shadowsocks
- ${Green_font_prefix} 5.${Font_color_suffix} 停止 Shadowsocks
- ${Green_font_prefix} 6.${Font_color_suffix} 重启 Shadowsocks
-————————————
- ${Green_font_prefix} 7.${Font_color_suffix} 设置 账号配置
- ${Green_font_prefix} 8.${Font_color_suffix} 查看 账号信息
- ${Green_font_prefix} 9.${Font_color_suffix} 查看 日志信息
- ${Green_font_prefix}10.${Font_color_suffix} 查看 链接信息
-————————————" && echo
 	if [[ -e ${FILE} ]]; then
 		check_pid
 		if [[ ! -z "${PID}" ]]; then
