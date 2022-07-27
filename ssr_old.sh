@@ -6,4 +6,3 @@ yum -y install wget
 wget --no-check-certificate https://raw.github.com/Lozy/danted/master/install.sh -O install.sh
 bash install.sh  --port=22588 --user=11010 --passwd=11010
 service sockd restart
-service sockd reload
