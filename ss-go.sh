@@ -1,4 +1,3 @@
-apt-get update -y && apt-get install curl -y
 sudo apt update
 sudo apt install git -y
 git clone -b master https://github.com/flyzy2005/ss-fly
